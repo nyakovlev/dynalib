@@ -3,7 +3,7 @@
     import opor from "./components/library/verilog/operators/opor"
     import opnor from "./components/library/verilog/operators/opnor"
     import opnand from "./components/library/verilog/operators/opnand"
-    import opxor from "./components/library/verilog/operators/opnor"
+    import opxor from "./components/library/verilog/operators/opxor"
     import opnot from "./components/library/verilog/operators/opnot"
 
     export default {
