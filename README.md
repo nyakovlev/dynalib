@@ -1,4 +1,4 @@
-# cli
+# DynaLib
 
 > A Vue.js project
 
