@@ -2,19 +2,17 @@
     import topictitle from "../../../topictitle"
 
     export default {
-        name: "opand",
+        name: "opnot",
         components: {
             topictitle
         },
         data() {
             return {
-                env: {a: 1, b: 1, c: 1},
+                env: {a: 1, b: 0},
                 focus_cmb: null,
                 combos: [
-                    {a: 0, b: 0, c: 0},
-                    {a: 0, b: 1, c: 0},
-                    {a: 1, b: 0, c: 0},
-                    {a: 1, b: 1, c: 1}
+                    {a: 1, b: 0},
+                    {a: 0, b: 1}
                 ]
             }
         }
@@ -42,19 +40,15 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
-    .input_a, .input_b, .output_c {
+    .input_a, .output_b {
         position: absolute;
         transform: translate(-50%, -50%);
     }
     .input_a {
-        left: 33px;
-        top: 30%;
+        left: 39px;
+        top: 50%;
     }
-    .input_b {
-        left: 33px;
-        top: 70%;
-    }
-    .output_c {
+    .output_b {
         left: 79%;
         top: 50%;
     }
@@ -97,25 +91,21 @@
 
 <template>
     <div class="topic">
-        <topictitle :desc="'AND Gate (&&)'"></topictitle>
+        <topictitle :desc="'NOT Gate'"></topictitle>
         <div class="content">
             <div class="live_diagram">
-                <img class="wires" src="./wires.svg">
-                <img class="gate" src="./and_gate.svg">
+                <img class="wires" src="./wires_1_1.svg">
+                <img class="gate" src="./not_gate.svg">
                 <div class="input_a bit" v-bind:class="{bit_0: !env.a, bit_1: env.a}">{{ env.a }}</div>
-                <div class="input_b bit" v-bind:class="{bit_0: !env.b, bit_1: env.b}">{{ env.b }}</div>
-                <div class="output_c bit" v-bind:class="{bit_0: !env.c, bit_1: env.c}">{{ env.c }}</div>
+                <div class="output_b bit" v-bind:class="{bit_0: !env.b, bit_1: env.b}">{{ env.b }}</div>
             </div>
-            Like any typical operator, <b>AND</b> takes two inputs and produces one output.
-            <br>
-            The output is <b>1</b> if both inputs are <b>1</b>. Otherwise, the output is <b>0</b>.
+            Inverts the data; if the input is <b>1</b>, the output is <b>0</b>, and vice versa.
             <br>
             The table below shows all possible combinations of this operator:
-            <table @mouseleave="focus_cmb = null; env = {a: 1, b: 1, c: 1}">
+            <table @mouseleave="focus_cmb = null; env = {a: 1, b: 0}">
                 <tr class="title_tr">
                     <td>Input A</td>
-                    <td>Input B</td>
-                    <td>Output C</td>
+                    <td>Output B</td>
                 </tr>
                 <tr v-for="(c, cindex) in combos" :key="cindex"
                     @mouseover="focus_cmb = cindex; env = c"
@@ -123,7 +113,6 @@
                 >
                     <td><div class="bit" v-bind:class="{bit_0: !c.a, bit_1: c.a}">{{ c.a }}</div></td>
                     <td><div class="bit" v-bind:class="{bit_0: !c.b, bit_1: c.b}">{{ c.b }}</div></td>
-                    <td><div class="bit" v-bind:class="{bit_0: !c.c, bit_1: c.c}">{{ c.c }}</div></td>
                 </tr>
             </table>
             (Hover over a table row to see it in the diagram)

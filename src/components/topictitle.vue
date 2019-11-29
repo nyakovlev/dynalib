@@ -14,6 +14,7 @@
     .title {
         font-family: monospace;
         font-size: 16px;
+        font-weight: bold;
         padding: 2px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.185);
     }

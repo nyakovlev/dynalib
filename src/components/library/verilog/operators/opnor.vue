@@ -2,19 +2,19 @@
     import topictitle from "../../../topictitle"
 
     export default {
-        name: "opand",
+        name: "opnor",
         components: {
             topictitle
         },
         data() {
             return {
-                env: {a: 1, b: 1, c: 1},
+                env: {a: 0, b: 0, c: 1},
                 focus_cmb: null,
                 combos: [
-                    {a: 0, b: 0, c: 0},
+                    {a: 0, b: 0, c: 1},
                     {a: 0, b: 1, c: 0},
                     {a: 1, b: 0, c: 0},
-                    {a: 1, b: 1, c: 1}
+                    {a: 1, b: 1, c: 0}
                 ]
             }
         }
@@ -97,21 +97,21 @@
 
 <template>
     <div class="topic">
-        <topictitle :desc="'AND Gate (&&)'"></topictitle>
+        <topictitle :desc="'NOR Gate'"></topictitle>
         <div class="content">
             <div class="live_diagram">
                 <img class="wires" src="./wires.svg">
-                <img class="gate" src="./and_gate.svg">
+                <img class="gate" src="./nor_gate.svg">
                 <div class="input_a bit" v-bind:class="{bit_0: !env.a, bit_1: env.a}">{{ env.a }}</div>
                 <div class="input_b bit" v-bind:class="{bit_0: !env.b, bit_1: env.b}">{{ env.b }}</div>
                 <div class="output_c bit" v-bind:class="{bit_0: !env.c, bit_1: env.c}">{{ env.c }}</div>
             </div>
-            Like any typical operator, <b>AND</b> takes two inputs and produces one output.
+            The exact opposite of OR; it's like connecting an OR gate to a NOT gate.
             <br>
-            The output is <b>1</b> if both inputs are <b>1</b>. Otherwise, the output is <b>0</b>.
+            The output is <b>0</b> if any inputs are <b>1</b>. Otherwise, the output is <b>1</b>.
             <br>
             The table below shows all possible combinations of this operator:
-            <table @mouseleave="focus_cmb = null; env = {a: 1, b: 1, c: 1}">
+            <table @mouseleave="focus_cmb = null; env = {a: 0, b: 0, c: 1}">
                 <tr class="title_tr">
                     <td>Input A</td>
                     <td>Input B</td>
